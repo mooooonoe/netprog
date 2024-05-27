@@ -1,12 +1,13 @@
 #include <stdio.h>
 
 void main(void) {
-	union endian {
-		unsigned char c;
-		unsigned short s;
-		unsigned int i;
-	};
-	union endian e;
-	e.i = 0x12345678;
-	printf("%x %x %x\n", e.c, e.s, e.i);
+	int x = 0x12345678;
+	int* addr;
+	addr = &x;
+	printf("%x %x %x\n",
+		*(unsigned char*)addr,
+		*((unsigned char*)addr + 1),
+		*((unsigned char*)addr + 2),
+		*((unsigned char*)addr + 3));
+
 }
